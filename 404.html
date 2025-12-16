@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404</title>
+  <link rel="shortcut icon" href="assets/img/icon.ico" type="image/x-icon">
+  <!-- Unbounded -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Unbounded', sans-serif;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: black;
+    }
+
+    /* glowing background */
+    .bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(
+          ellipse at center,
+          rgba(255, 0, 0, 0.9) 0%,
+          rgba(180, 0, 0, 0.6) 30%,
+          rgba(80, 0, 0, 0.4) 50%,
+          rgba(0, 0, 0, 1) 75%
+        );
+      animation: pulse 8s ease-in-out infinite;
+      filter: blur(40px);
+      transform: scale(1.2);
+    }
+
+    .bg::after {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(255, 0, 0, 0.6),
+          transparent 60%
+        );
+      animation: slowMove 14s ease-in-out infinite alternate;
+      filter: blur(120px);
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 24px;
+      max-width: 700px;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+    }
+
+    p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 300;
+      opacity: 0.9;
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+        background: white;
+        color: black;
+        border-color: black;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+    }
+
+    @keyframes pulse {
+      0% {
+        filter: blur(40px);
+        opacity: 0.9;
+      }
+      50% {
+        filter: blur(55px);
+        opacity: 1;
+      }
+      100% {
+        filter: blur(40px);
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes slowMove {
+      from {
+        transform: translate(-5%, -5%) scale(1);
+      }
+      to {
+        transform: translate(5%, 5%) scale(1.1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <div class="content">
+    <h1>Упс!</h1>
+    <p>
+      Схоже ми ще не встигли зробити цю частину сайту.<br>
+      Зовсім скоро вона буде готова!
+    </p>
+
+    <a href="/" class="btn">Повернутись на головну</a>
+  </div>
+</body>
+</html>
