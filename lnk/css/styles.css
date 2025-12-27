@@ -137,6 +137,16 @@ body {
     display: block;
     border-radius: 15px 15px 0 0 / 12px 12px 0 0;
 }
+.cover-overlay {
+    position: absolute;
+    inset: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 12px;
+    pointer-events: none;
+}
 .link-item a {
     flex-shrink: 0;
     width: 45%;
@@ -173,4 +183,16 @@ body {
 }
 .social-link:hover {
     color: #ff0000;
+}
+
+@media (max-width: 1080px) {
+
+}
+@media (max-width: 768px) {
+
+}
+@media (max-width: 480px) {
+    body {
+        padding: 0 0;
+    }
 }
