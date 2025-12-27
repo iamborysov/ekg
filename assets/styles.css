@@ -4,11 +4,16 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     font-family: 'Unbounded', sans-serif;
     background-color: #000;
     min-height: 100vh;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 .header {
@@ -21,6 +26,67 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    width: 100%;
+}
+
+/* Footer styled similarly to header */
+.footer {
+    background: black;
+    padding: 36px 24px;
+    border-top: 1px solid #111;
+    width: 100%;
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo {
+    /* набагато більший логотип */
+    max-width: 400px;
+    height: auto;
+    display: block;
+}
+
+
+.footer-social {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Кнопки футера тотожні до кнопок у хедері */
+.footer .social-link {
+    color: #ff0000; /* як у header */
+    font-size: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: color 0.18s ease;
+}
+
+.footer .social-link:hover {
+    color: #fff; /* як у header */
+}
+
+.footer-note {
+    color: #9a9a9a;
+    font-size: 13px;
+    margin-top: 10px;
+    text-align: center; /* центрований копірайт */
     width: 100%;
 }
 
@@ -111,6 +177,295 @@ body {
     display: block;
 }
 
+/* Release Section */
+.release-section {
+    padding: 50px 40px;
+    text-align: center;
+    position: relative;
+}
+
+.background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    filter: blur(8px) brightness(0.35);
+    transform: scale(1.03);
+    pointer-events: none;
+}
+
+.release-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: #fff;
+}
+
+.release-title {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.embed-container {
+    max-width: 900px;
+    margin: 0 auto 18px;
+}
+
+.embed-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 ratio */
+    background: rgba(0,0,0,0.35);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.embed-inner iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.embed-error {
+    margin-top: 12px;
+    color: #ffdede;
+    background: rgba(120,0,0,0.25);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* ensure hidden attribute removes element from layout */
+.embed-error[hidden] {
+    display: none !important;
+}
+
+.release-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.open-youtube {
+    display: none; /* shown only on error */
+    padding: 12px 22px;
+    text-decoration: none;
+    color: #ff0000;
+    background: rgba(255,255,255,0.95);
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.open-youtube:hover {
+    filter: brightness(0.95);
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: 10px;
+}
+
+/* Cover card (replaces video) */
+.cover-card {
+    width: 100%;
+    /* smaller on desktop so cover doesn't dominate layout */
+    max-width: 660px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.45));
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.cover-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.cover-overlay {
+    position: absolute;
+    inset: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 12px;
+    pointer-events: none;
+}
+
+.premiere-badge {
+    background: linear-gradient(90deg, #ff4d4d, #ff0000);
+    color: #fff;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    letter-spacing: 0.6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+
+.track-title {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    margin: 0;
+}
+
+.listen-button {
+      display: inline-block;
+      padding: 14px 32px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+}
+
+.listen-button:hover {
+        background: white;
+        color: black;
+        border-color: black;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+}
+
+/* Songs section and grid */
+.songs-section {
+    padding: 15px 40px;
+    text-align: center;
+    position: relative;
+}
+
+.section-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 24px;
+}
+
+.section-header h2 {
+    color: #fff;
+    font-size: 34px;
+    font-weight: 700;
+    margin: 0 auto;
+}
+
+.songs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+    max-width: 1100px;
+    margin: 0 auto 35px;
+    position: relative;
+    z-index: 1;
+}
+
+.song-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.song-item .track-title {
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Marquee (continuous right -> left) */
+.marquee-wrapper {
+    width: 100%;
+}
+
+.marquee {
+    display: inline-flex;
+    align-items: center;
+    gap: 40px;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee 60s linear infinite;
+    transform: translate3d(0,0,0);
+}
+
+.marquee-item {
+    display: inline-block;
+    color: #fff;
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 1;
+    padding: 6px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Faster and smaller on small screens */
+@media (max-width: 1024px) {
+    .marquee { animation-duration: 50s; }
+    .marquee-item { font-size: 48px; }
+}
+
+@media (max-width: 768px) {
+    .marquee { animation-duration: 40s; }
+    .marquee-item { font-size: 36px; }
+}
+
+@media (max-width: 480px) {
+    .marquee { animation-duration: 30s; }
+    .marquee-item { font-size: 24px; }
+}
+
+/* Responsive cover sizing: keep cover small on desktop, full-width on phones */
+@media (max-width: 1024px) {
+    .cover-card { max-width: 520px; }
+}
+
+@media (max-width: 768px) {
+    /* On tablets/phones allow cover to grow to available width with side padding */
+    .cover-card {
+        max-width: none;
+        width: calc(100% - 30px);
+        margin: 0 auto;
+    }
+    .songs-section {
+        padding: 20px 15px;
+        overflow: visible; /* allow marquee / content to be visible on small screens */
+    }
+}
+
+/* Prevent accidental extra vertical scrolling: ensure section doesn't grow beyond content */
+.songs-section { overflow: hidden; }
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .header {
@@ -133,6 +488,24 @@ body {
     .hero-image {
         height: calc(100vh - 71px);
         min-height: 350px;
+    }
+
+    .footer {
+        padding: 14px 20px;
+    }
+
+    .footer-logo {
+    max-width: 350px;
+    height: auto;
+    display: block;
+    }
+    
+    .release-section {
+        padding: 40px 30px;
+    }
+    
+    .video-container iframe {
+        height: 400px;
     }
 }
 
@@ -161,6 +534,25 @@ body {
     .hero-image {
         height: calc(100vh - 140px);
         min-height: 300px;
+    }
+    
+    .release-section {
+        padding: 30px 20px;
+    }
+    
+    .video-container iframe {
+        height: 350px;
+    }
+    
+    .listen-button {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+
+    .footer-logo {
+    max-width: 200px;
+    height: auto;
+    display: block;
     }
 }
 
@@ -192,5 +584,24 @@ body {
     .hero-image {
         height: calc(100vh - 180px);
         min-height: 250px;
+    }
+    
+    .release-section {
+        padding: 20px 15px;
+    }
+    
+    .video-container iframe {
+        height: 250px;
+    }
+    
+    .listen-button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .footer-logo {
+    max-width: 150px;
+    height: auto;
+    display: block;
     }
 }
